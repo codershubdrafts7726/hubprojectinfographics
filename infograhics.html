@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Clock - The Unified Institute Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+        }
+        .brand-text-deep { color: #00449E; }
+        .brand-text-primary { color: #005CB9; }
+        .brand-text-bright { color: #007BFF; }
+        .brand-bg-deep { background-color: #00449E; }
+        .brand-bg-primary { background-color: #005CB9; }
+        .brand-bg-bright { background-color: #007BFF; }
+        .brand-bg-light { background-color: #E6F2FF; }
+        .brand-border-bright { border-color: #007BFF; }
+        .kpi-number {
+            font-weight: 900;
+            font-size: 4rem;
+            line-height: 1;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .pyramid-level {
+            clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center py-12">
+            <h1 class="text-4xl md:text-6xl font-black brand-text-deep mb-4">Campus Clock</h1>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">The Unified, Modular, and Intelligent Institute Management System designed to revolutionize education.</p>
+        </header>
+
+        <section class="py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold brand-text-primary mb-2">From Administrative Chaos to Digital Clarity</h2>
+                <p class="text-lg text-gray-600">Campus Clock transforms scattered, manual tasks into a streamlined, automated workflow.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+                <div class="text-center p-6 bg-red-100 rounded-lg shadow-md w-full md:w-1/3">
+                    <div class="text-4xl mb-4">📄</div>
+                    <h3 class="text-xl font-bold text-red-800">The Old Way</h3>
+                    <p class="text-red-700">Endless paperwork, data silos, communication gaps, and wasted resources.</p>
+                </div>
+                <div class="text-5xl brand-text-bright font-bold transform md:rotate-0 rotate-90">&rarr;</div>
+                <div class="text-center p-6 brand-bg-light rounded-lg shadow-md w-full md:w-1/3">
+                    <div class="text-4xl mb-4">💻</div>
+                    <h3 class="text-xl font-bold brand-text-deep">The Campus Clock Way</h3>
+                    <p class="brand-text-primary">A single, secure platform for total efficiency, transparency, and control.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white rounded-2xl shadow-lg">
+            <div class="text-center mb-12 px-4">
+                <h2 class="text-3xl font-bold brand-text-primary mb-2">A Complete Ecosystem for Your Institute</h2>
+                <p class="text-lg text-gray-600">Twelve powerful, interconnected modules covering every aspect of campus life.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-8">
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">🗓️</div><h3 class="font-bold">Timetable Scheduling</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">📥</div><h3 class="font-bold">Admission Management</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">💼</div><h3 class="font-bold">Office & Staff Management</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">🎓</div><h3 class="font-bold">Student Management</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">🏆</div><h3 class="font-bold">Placement Management</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">🎉</div><h3 class="font-bold">College Activities</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">🤝</div><h3 class="font-bold">Meeting Allotment</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">📚</div><h3 class="font-bold">Library Management</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">📦</div><h3 class="font-bold">Stock Management</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">🚌</div><h3 class="font-bold">Transport Management</h3>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">🍔</div><h3 class="font-bold">Canteen Management</h3>
+                </div>
+                 <div class="p-4 bg-gray-50 rounded-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-4xl mb-2">🔗</div><h3 class="font-bold">Alumni Management</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold brand-text-primary mb-2">Built on a Foundation of Trust & Control</h2>
+                <p class="text-lg text-gray-600">Our core principles ensure your data is secure and access is always appropriate.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold brand-text-deep mb-4 text-center">Hierarchical Access Control</h3>
+                    <div class="space-y-1 max-w-sm mx-auto">
+                        <div class="pyramid-level brand-bg-deep text-white text-center w-full mx-auto">
+                            <p class="font-bold">Principal / Admin</p>
+                            <p class="text-sm opacity-80">Full System Oversight</p>
+                        </div>
+                        <div class="pyramid-level brand-bg-primary text-white text-center w-11/12 mx-auto">
+                            <p class="font-bold">Head of Department</p>
+                             <p class="text-sm opacity-80">Departmental Access</p>
+                        </div>
+                        <div class="pyramid-level brand-bg-bright text-white text-center w-10/12 mx-auto">
+                            <p class="font-bold">Teachers / Staff</p>
+                             <p class="text-sm opacity-80">Class & Function Access</p>
+                        </div>
+                        <div class="pyramid-level bg-blue-200 text-blue-900 text-center w-9/12 mx-auto">
+                            <p class="font-bold">Students & Parents</p>
+                             <p class="text-sm opacity-80">Personal Data Access</p>
+                        </div>
+                    </div>
+                    <p class="text-center mt-4 text-gray-600">A granular, role-based model ensures users only see what they need to, guaranteeing data privacy and security.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                     <h3 class="text-2xl font-bold brand-text-deep mb-6 text-center">Ironclad Security Framework</h3>
+                     <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="text-4xl mr-4">🔐</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Biometric & Passcode Auth</h4>
+                                <p class="text-gray-600">A mandatory second layer of security for critical actions like financial approvals and data modification.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="text-4xl mr-4">🔍</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Comprehensive Audit Trail</h4>
+                                <p class="text-gray-600">Every action is logged with a user ID and timestamp, ensuring full transparency and accountability.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="text-4xl mr-4">💳</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Unified ID Card System</h4>
+                                <p class="text-gray-600">A single physical and virtual ID with a unique QR code for seamless integration across all modules.</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 brand-bg-light rounded-2xl">
+            <div class="text-center mb-12 px-4">
+                <h2 class="text-3xl font-bold brand-text-primary mb-2">The Power of "Plug-and-Play" Modularity</h2>
+                <p class="text-lg text-gray-600">Customize Campus Clock to your exact needs. Pay only for what you use.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 px-4">
+                <div class="p-6 brand-bg-deep text-white rounded-lg text-center shadow-lg">
+                    <h3 class="text-xl font-bold">Core System</h3>
+                    <p>Student & Staff Mgmt</p>
+                </div>
+                <div class="text-3xl font-bold brand-text-primary">+</div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-3 bg-white border-2 border-dashed brand-border-bright rounded-lg text-center">Library</div>
+                    <div class="p-3 bg-white border-2 border-dashed brand-border-bright rounded-lg text-center">Transport</div>
+                    <div class="p-3 bg-white border-2 border-dashed brand-border-bright rounded-lg text-center">Placements</div>
+                    <div class="p-3 bg-white border-2 border-dashed brand-border-bright rounded-lg text-center">... and more</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="text-center mb-12 px-4">
+                <h2 class="text-3xl font-bold brand-text-primary mb-2">Proactive Intelligence with AI</h2>
+                <p class="text-lg text-gray-600">We use AI not just to manage, but to actively enhance educational outcomes.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold brand-text-deep mb-4 text-center">At-Risk Student Identification</h3>
+                    <p class="text-center text-gray-600 mb-4">Our AI early warning system analyzes attendance, grades, and behavior to identify struggling students, enabling timely intervention.</p>
+                    <div class="chart-container">
+                        <canvas id="atRiskChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold brand-text-deep mb-4 text-center">AI-Powered Academic Support</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 brand-bg-light rounded-lg">
+                            <h4 class="font-bold brand-text-primary">Automated Quiz Generation</h4>
+                            <p class="text-gray-700">Teachers can instantly create tailored mock tests and quizzes based on subject, chapter, and difficulty.</p>
+                        </div>
+                        <div class="p-4 brand-bg-light rounded-lg">
+                            <h4 class="font-bold brand-text-primary">24/7 Student & Teacher Assistant</h4>
+                            <p class="text-gray-700">An integrated chatbot helps students with queries and assists teachers with resources and grading.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold brand-text-primary mb-2">Measurable Impact</h2>
+                <p class="text-lg text-gray-600">Driving tangible improvements across the institution.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="relative w-48 h-48 mx-auto mb-4">
+                        <canvas id="efficiencyChart"></canvas>
+                        <div class="absolute inset-0 flex items-center justify-center kpi-number brand-text-deep">85%</div>
+                    </div>
+                    <h3 class="text-xl font-bold">Increase in Operational Efficiency</h3>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="relative w-48 h-48 mx-auto mb-4">
+                        <canvas id="engagementChart"></canvas>
+                        <div class="absolute inset-0 flex items-center justify-center kpi-number brand-text-deep">75%</div>
+                    </div>
+                    <h3 class="text-xl font-bold">Rise in Parent & Student Engagement</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="relative w-48 h-48 mx-auto mb-4">
+                        <canvas id="paperworkChart"></canvas>
+                        <div class="absolute inset-0 flex items-center justify-center kpi-number brand-text-deep">90%</div>
+                    </div>
+                    <h3 class="text-xl font-bold">Reduction in Manual Paperwork</h3>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-8 mt-12 border-t">
+            <p class="font-bold text-xl brand-text-deep">Ready to build the future of your institution?</p>
+            <p class="text-gray-600">Discover Campus Clock today.</p>
+            <a href="#" class="mt-4 inline-block brand-bg-bright text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-600 transition-colors">Request a Demo</a>
+        </footer>
+
+    </main>
+
+    <script>
+        const tooltipCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        const atRiskCtx = document.getElementById('atRiskChart').getContext('2d');
+        new Chart(atRiskCtx, {
+            type: 'line',
+            data: {
+                labels: ['Pre-System', 'Year 1', 'Year 2', 'Year 3'],
+                datasets: [{
+                    label: 'At-Risk Student Dropout Rate',
+                    data: [18, 11, 6, 4],
+                    borderColor: '#007BFF',
+                    backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                ...tooltipCallback,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        function createDonutChart(elementId, dataValue, color) {
+            const ctx = document.getElementById(elementId).getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Achieved', 'Remaining'],
+                    datasets: [{
+                        data: [dataValue, 100 - dataValue],
+                        backgroundColor: [color, '#E9ECEF'],
+                        borderColor: ['#FFFFFF'],
+                        borderWidth: 4,
+                        cutout: '80%'
+                    }]
+                },
+                options: {
+                    ...tooltipCallback,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { enabled: false }
+                    }
+                }
+            });
+        }
+
+        createDonutChart('efficiencyChart', 85, '#005CB9');
+        createDonutChart('engagementChart', 75, '#007BFF');
+        createDonutChart('paperworkChart', 90, '#4DA3FF');
+    </script>
+</body>
+</html>
